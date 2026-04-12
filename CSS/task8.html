@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quiz Dashboard</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    #header {
+      text-align: center;
+      background-color: antiquewhite;
+      padding: 10px;
+    }
+    #footer {
+      background-color: beige;
+      text-align: center;
+      padding: 10px;
+
+    }
+    main {
+      padding: 20px;
+    }
+    section {
+      margin-bottom: 20px;
+    }
+    label {
+      display: block;
+      margin: 5px 0;
+      cursor: pointer;
+    }
+    input {
+      margin-right: 10px;
+    }
+    input:checked + span.correct {
+      color: green;
+      font-weight: bold;
+    }
+    input:checked + span.incorrect {
+      color: red;
+      font-weight: bold;
+    }
+    label:hover {
+      background-color: #f0f0f0;
+    }
+  </style>
+</head>
+<body>
+  <header id="header"><h3>Take a Quiz</h3></header>
+  <main>
+    <section>
+      <h4>1. what is 2+2?</h4>
+      <label><input type="radio" name="q1"><span class="correct">4</span></label>
+      <label><input type="radio" name="q1"><span class="incorrect">3</span></label>
+      <label><input type="radio" name="q1"><span class="incorrect">22</span></label>
+      <label><input type="radio" name="q1"><span class="incorrect">1</span></label>
+    </section>
+
+    <section>
+      <h4>2. Which is prime here?</h4>
+      <label><input type="radio" name="q2"><span class="incorrect">4</span></label>
+      <label><input type="radio" name="q2"><span class="correct">2</span></label>
+      <label><input type="radio" name="q2"><span class="correct">3</span></label>
+      <label><input type="radio" name="q2"><span class="incorrect">8</span></label>
+    </section>
+
+    <section>
+      <h4>3. Who developed the theory of relativity?</h4>
+      <label><input type="radio" name="q3"><span class="incorrect">Narendra Modi</span></label>
+      <label><input type="radio" name="q3"><span class="correct">Albert Einstein</span></label>
+      <label><input type="radio" name="q3"><span class="incorrect">Tom Cruise</span></label>
+      <label><input type="radio" name="q3"><span class="incorrect">Nikola Tesla</span></label>
+    </section>
+  </main>
+  <footer id="footer">Have a nice Day</footer>
+</body>
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Dashboard</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+       <style>
+    input:checked + span.correct {
+        color: green;
+        font-weight: bold;
+    }
+    input:checked + span.incorrect {
+        color: red;
+        font-weight: bold;
+    }
+</style>
+    </style>
+</head>
+<body>
+
+    <header class="text-center bg-green-100 px-3 py-3">
+        <h3 class="text-lg font-semibold">Take a Quiz</h3>
+    </header>
+
+    <main class="p-5">
+
+        <section class="mb-5">
+            <h4 class="font-medium mb-1">1. What is 2+2?</h4>
+            <label class="block my-1 cursor-pointer hover:bg-gray-100">
+                <input type="radio" name="q1" class="mr-2"><span class="correct">4</span>
+            </label>
+            <label class="block my-1 cursor-pointer hover:bg-gray-100">
+                <input type="radio" name="q1" class="mr-2"><span class="incorrect">3</span>
+            </label>
+            <label class="block my-1 cursor-pointer hover:bg-gray-100">
+                <input type="radio" name="q1" class="mr-2"><span class="incorrect">22</span>
+            </label>
+            <label class="block my-1 cursor-pointer hover:bg-gray-100">
+                <input type="radio" name="q1" class="mr-2"><span class="incorrect">1</span>
+            </label>
+        </section>
+
+        <section class="mb-5">
+            <h4 class="font-medium mb-1">2. Which is prime here?</h4>
+            <label class="block my-1 cursor-pointer hover:bg-gray-100">
+                <input type="radio" name="q2" class="mr-2"><span class="incorrect">4</span>
+            </label>
+            <label class="block my-1 cursor-pointer hover:bg-gray-100">
+                <input type="radio" name="q2" class="mr-2"><span class="correct">2</span>
+            </label>
+            <label class="block my-1 cursor-pointer hover:bg-gray-100">
+                <input type="radio" name="q2" class="mr-2"><span class="correct">3</span>
+            </label>
+            <label class="block my-1 cursor-pointer hover:bg-gray-100">
+                <input type="radio" name="q2" class="mr-2"><span class="incorrect">8</span>
+            </label>
+        </section>
+
+        <section class="mb-5">
+            <h4 class="font-medium mb-1">3. Who developed the theory of relativity?</h4>
+            <label class="block my-1 cursor-pointer hover:bg-gray-100">
+                <input type="radio" name="q3" class="mr-2"><span class="incorrect">Narendra Modi</span>
+            </label>
+            <label class="block my-1 cursor-pointer hover:bg-gray-100">
+                <input type="radio" name="q3" class="mr-2"><span class="correct">Albert Einstein</span>
+            </label>
+            <label class="block my-1 cursor-pointer hover:bg-gray-100">
+                <input type="radio" name="q3" class="mr-2"><span class="incorrect">Tom Cruise</span>
+            </label>
+            <label class="block my-1 cursor-pointer hover:bg-gray-100">
+                <input type="radio" name="q3" class="mr-2"><span class="incorrect">Nikola Tesla</span>
+            </label>
+        </section>
+
+    </main>
+
+    <footer class="bg-green-50 text-center px-3 py-3">Have a nice Day</footer>
+
+</body>
+</html>
