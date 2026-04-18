@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>QuoteBoard</title>
+  <style>
+   
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      /* GRADIENT radial + linear layered */
+      background:
+        radial-gradient(ellipse at top left, #c850c0 0%, transparent 50%),
+        radial-gradient(ellipse at bottom right, #4158d0 0%, transparent 60%),
+        linear-gradient(135deg, #1a1a4e 0%, #1b3a6b 60%, #0d2137 100%);
+      min-height: 100vh;
+      color: white;
+    }
+
+    /*HEADER */
+    header {
+      background: rgba(255, 255, 255, 0.07);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+      padding: 16px 40px;
+
+      /* FLEX */
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    /* descendant selector: targets <strong> inside <header> */
+    header strong {
+      font-size: 1.3rem;
+      letter-spacing: 0.5px;
+    }
+
+    /*  child selector: direct <nav> child of <header> */
+    header > nav {
+      display: flex;
+      gap: 28px;
+    }
+
+    /* COMBINATOR — descendant: all <a> tags inside <nav> */
+    nav a {
+      color: rgba(255,255,255,0.8);
+      text-decoration: none;
+      font-size: 0.95rem;
+      transition: color 0.2s;
+    }
+
+    /* COMBINATOR — adjacent sibling: <a> that comes right after another <a> */
+    nav a + a {
+      border-left: 1px solid rgba(255,255,255,0.2);
+      padding-left: 28px;
+    }
+
+    nav a:hover {
+      color: white;
+    }
+
+    /* HERO SECTION */
+    .hero {
+      text-align: center;
+      padding: 48px 20px 32px;
+    }
+
+    .hero h1 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      /* GRADIENT on text */
+      background: linear-gradient(90deg, #ffffff, #a8c8ff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 10px;
+    }
+
+    /* adjacent sibling: <p> right after <h1> in .hero */
+    .hero h1 + p {
+      color: rgba(255,255,255,0.65);
+      font-size: 1rem;
+    }
+
+    /* MAIN GRID */
+    main {
+      padding: 20px 40px 40px;
+      /*  wrapping grid layout */
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    /* QUOTE CARD*/
+    article {
+      background: rgba(255, 255, 255, 0.12);
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 16px;
+      padding: 24px 20px 16px;
+      /* column layout inside each card */
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+
+      flex: 1 1 200px;   /* flex-grow, flex-shrink, flex-basis */
+      max-width: calc(25% - 16px);
+      min-height: 160px;
+      transition: transform 0.2s, background 0.2s;
+    }
+
+    article:hover {
+      transform: translateY(-4px);
+      background: rgba(255,255,255,0.18);
+    }
+
+    /*  child selector: direct <p> child of <article> */
+    article > p {
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.85);
+      line-height: 1.5;
+      flex: 1;
+    }
+
+    /* COMBINATOR — general sibling: <footer> that is a sibling of <p> inside article */
+    article p ~ footer {
+      margin-top: 16px;
+    }
+
+    /* Quote icon using ::before pseudo-element */
+    article > p::before {
+      content: '\201C\201C';
+      font-size: 1.1rem;
+      color: rgba(180,200,255,0.6);
+      margin-right: 4px;
+    }
+
+    /* CARD FOOTER author badge */
+    article footer {
+      /* GRADIENT on author badge */
+      background: linear-gradient(135deg, rgba(200,220,255,0.2), rgba(150,180,255,0.1));
+      border: 1px solid rgba(180,210,255,0.25);
+      border-radius: 20px;
+      padding: 7px 14px;
+      text-align: center;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: #a8c8ff;
+    }
+
+    /*  PAGE FOOTER */
+    body > footer {
+      /*  GRADIENT */
+      background: linear-gradient(180deg, rgba(10,20,60,0.6), rgba(5,10,40,0.9));
+      border-top: 1px solid rgba(255,255,255,0.1);
+      text-align: center;
+      padding: 28px 20px;
+    }
+
+    /*  child selector: <p> directly inside body > footer */
+    body > footer > p {
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.6);
+      margin-bottom: 10px;
+      /* for heart alignment */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .heart {
+      color: #ff6b6b;
+      font-size: 1rem;
+    }
+
+    /*  child <nav> inside body > footer */
+    body > footer > nav {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    /* descendant: <a> inside footer nav */
+    body > footer nav a {
+      color: rgba(255,255,255,0.45);
+      text-decoration: none;
+      font-size: 0.8rem;
+      transition: color 0.2s;
+    }
+
+    body > footer nav a:hover {
+      color: rgba(255,255,255,0.85);
+    }
+
+    /*  adjacent sibling: footer nav a + a */
+    body > footer nav a + a {
+      border-left: 1px solid rgba(255,255,255,0.15);
+      padding-left: 20px;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      article {
+        max-width: calc(50% - 10px);
+      }
+      main {
+        padding: 20px;
+      }
+    }
+    @media (max-width: 480px) {
+      article {
+        max-width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!--  for top navigation bar -->
+  <header>
+    <strong>QuoteBoard</strong>
+    <nav>
+      <a href="#">Home</a>
+      <a href="#">Quotes</a>
+      <a href="#">About</a>
+    </nav>
+  </header>
+
+  <!--  for the hero/intro area -->
+  <section class="hero">
+    <h1>Motivational Quotes</h1>
+    <p>Small words. Big impact. Stay focused and keep growing.</p>
+  </section>
+
+  <!-- for the primary content -->
+  <main>
+
+    <!--  for each self-contained quote -->
+    <article>
+      <p>Keep exploring new ways to learn, always be ready with the plan B</p>
+      <footer>Avisheak Upadhay</footer>
+    </article>
+
+    <article>
+      <p>Always try to be more productive than yesterday</p>
+      <footer>Anugya</footer>
+    </article>
+
+    <article>
+      <p>Be attentive in the class</p>
+      <footer>Yaswasini</footer>
+    </article>
+
+    <article>
+      <p>Try to solve the solution by yourself and then use AI</p>
+      <footer>Dikshya</footer>
+    </article>
+
+    <article>
+      <p>Come to class on time so you could not miss anything</p>
+      <footer>Avni</footer>
+    </article>
+
+    <article>
+      <p>You can do it</p>
+      <footer>Deepak</footer>
+    </article>
+
+    <article>
+      <p>Seek help from your friend directly, instead of beating around the bush through AI tools</p>
+      <footer>Abijit</footer>
+    </article>
+
+    <article>
+      <p>Always do your homework</p>
+      <footer>Ashish</footer>
+    </article>
+
+    <article>
+      <p>Keep Growing</p>
+      <footer>Aditya Thanku</footer>
+    </article>
+
+    <article>
+      <p>Learn sequentially</p>
+      <footer>Dhiraj</footer>
+    </article>
+
+    <article>
+      <p>Honesty is the best policy</p>
+      <footer>Anshul</footer>
+    </article>
+
+    <article>
+      <p>Stay curious</p>
+      <footer>Avinash</footer>
+    </article>
+
+    <article>
+      <p>Time and tide wait for none. Don't postpone things</p>
+      <footer>Vignan</footer>
+    </article>
+
+    <article>
+      <p>No pain, no gain</p>
+      <footer>Sai Reddy</footer>
+    </article>
+
+    <article>
+      <p>Just break the flow</p>
+      <footer>Avinav</footer>
+    </article>
+
+    <article>
+      <p>Have breakfast</p>
+      <footer>Hanshik</footer>
+    </article>
+
+    <article>
+      <p>Do it or your offer will be removed</p>
+      <footer>Anuska</footer>
+    </article>
+
+  </main>
+
+  <!-- page footer -->
+  <footer>
+    <p>© 2026 QuoteBoard | Built with <span class="heart">❤</span> using HTML &amp; CSS</p>
+    <nav>
+      <a href="#">Privacy</a>
+      <a href="#">Contact</a>
+      <a href="#">Support</a>
+    </nav>
+  </footer>
+
+</body>
+</html>

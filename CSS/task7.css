@@ -1,0 +1,9 @@
+#l1 > #i3{
+    color: aqua
+}
+
+#l3 > #i3 > #i3a , #i3b ,#i3a{
+    color: red;
+}
+
+
